@@ -1,0 +1,33 @@
+// 命名规定: 全局变量都要用g开头!
+
+// 全局变量
+$gColor:#333; //字体颜色
+
+
+// @include gSetLine(3), 用驼峰式命名
+@mixin gSetLine($line: 1, $lh: 1.5){
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  line-height: $lh;
+  word-break: break-word;
+}
+
+@mixin gPlaceholder($size: 1rem){
+  display: block;
+  // background: url("~@/views/images/common/placeholder.png") no-repeat center center;
+  background-size: $size;
+  background-color: #F0F0F0;
+  object-fit: cover;
+  &[src^='http']{
+    background-image: none;
+  }
+}
+
+@mixin gSetBg($url,$size:100%) {
+  display: block;
+  background: url($url) no-repeat center center;
+  background-size: $size;
+}
