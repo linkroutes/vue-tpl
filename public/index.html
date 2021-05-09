@@ -9,6 +9,17 @@
     <script>
       (function (l, e) { function g() { var a = d.getBoundingClientRect().width; e || (e = 540); a > e && (a = e); h.innerHTML = "html{font-size:" + 100 * a / l + "px;}" } var a = document, k = window, d = a.documentElement, b, h = document.createElement("style"), f; if (b = a.querySelector('meta[name="viewport"]')) b.setAttribute("content", "width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"); else if (b = a.createElement("meta"), b.setAttribute("name", "viewport"), b.setAttribute("content", "width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"), d.firstElementChild) d.firstElementChild.appendChild(b); else { var c = a.createElement("div"); c.appendChild(b); a.write(c.innerHTML); c = null } g(); d.firstElementChild ? d.firstElementChild.appendChild(h) : (c = a.createElement("div"), c.appendChild(h), a.write(c.innerHTML), c = null); k.addEventListener("resize", function () { clearTimeout(f); f = setTimeout(g, 300) }, !1); k.addEventListener("pageshow", function (a) { a.persisted && (clearTimeout(f), f = setTimeout(g, 300)) }, !1); "complete" === a.readyState ? a.body.style.fontSize = "16px" : a.addEventListener("DOMContentLoaded", function (b) { a.body.style.fontSize = "16px" }, !1) })(750, 750);
     </script>
+    <script>
+      window.scrollLock = true
+      let rootEle = document.documentElement
+      rootEle.addEventListener('touchmove', (e) => {
+        window.scrollLock && e.preventDefault();
+      }, { passive: false })
+
+      // 比例用于计算适配小屏
+      window.pageRadio = +(rootEle.clientWidth / rootEle.clientHeight).toFixed(2);
+      window.maxRadio = 0.56;
+    </script>
   </head>
   <body>
     <div id="app"></div>
