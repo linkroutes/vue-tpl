@@ -24,3 +24,11 @@
   background: url($url) no-repeat center center;
   background-size: $size;
 }
+
+
+@mixin gCenter($top:0) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: $top;
+}
