@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import routerGo from './router/throttle.js'
+import tool from "./utils/tool";
+Vue.prototype.$tool = tool
 Vue.config.productionTip = false
 
 // vue-meta
@@ -20,6 +22,10 @@ vp.$http = axios.create({
     // preset what you need
   }
 })
+
+let url = location.hash?location.hash.split('#')[1]: location.href;
+let urlData = tool.parseURL(url).params;
+console.log("gUrlData", urlData);
 
 // 已做节流处理
 routerGo();

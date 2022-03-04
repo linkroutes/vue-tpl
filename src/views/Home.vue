@@ -14,6 +14,10 @@
 </template>
 
 <script>
+import dateformat from 'dateformat'
+import Toast from "vant/lib/toast";
+import "vant/lib/toast/style";
+
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 
