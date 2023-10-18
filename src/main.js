@@ -4,6 +4,10 @@ import router from './router'
 import store from './store'
 import routerGo from './router/throttle.js'
 import tool from "./utils/tool";
+
+import {Toast} from 'vant';
+Vue.use(Toast);
+
 Vue.prototype.$tool = tool
 Vue.config.productionTip = false
 

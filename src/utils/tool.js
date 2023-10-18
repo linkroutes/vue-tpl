@@ -123,46 +123,6 @@ export default {
       }
     }
   },
-  save2upc(base64){
-    // 注意需要反向代理
-    let upcUrl = (process.env.NODE_ENV == 'development' ? '/upc' : 'https://upc.pconline.com.cn') + '/upload_quick_base64.jsp?referer=http://www.pconline.com.cn/'
-    return new Promise((resolve, reject) => {
-      return axios({
-        method: 'post',
-        url: upcUrl,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded' // 简化post请求
-        },
-        data: {
-          application: 'baby_tryout',
-          readExif: 'no',
-          keepSrc: 'no',
-          data: base64
-        },
-        transformRequest: [function (data,headers) {  // 对数据对象进行字符串转化
-          let ret = ''
-          for (let it in data) {
-            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-          }
-
-          return ret
-        }],
-      }).then((data) => {
-        let res = data.data,
-          code = res.retCode;
-        if (code === 0) {
-          let imgUrl = res.files[0].url
-          resolve && resolve(imgUrl)
-        } else {
-          console.log(data);
-          reject && reject()
-        }
-      }).catch((err) => {
-        console.log(err.message)
-        reject && reject()
-      })
-    })
-  },
   img2base64(config, cb) {
     if (!config.src) {
       console.log('请检查图片是否正确传入');
